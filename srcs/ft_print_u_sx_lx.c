@@ -6,7 +6,7 @@
 /*   By: ntoshihi <ntoshihi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 16:09:35 by ntoshihi          #+#    #+#             */
-/*   Updated: 2020/12/26 04:42:07 by ntoshihi         ###   ########.fr       */
+/*   Updated: 2021/02/07 01:06:18 by ntoshihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int		ft_setting_prec_p_u_sx_lx(t_info *flag, char *str)
 	else
 		while (flag->prec > num_len++)
 			res += ft_put_char('0');
+	if (flag->prec == 0 && flag->num_pointer == 0
+		&& flag->specifier == E_POINTER)
+		return (res);
 	res += ft_putnbr_p_u_sx_lx(ull_num, flag->num_base, str);
 	return (res);
 }
@@ -59,3 +62,11 @@ int		ft_print_u_sx_lx(t_info *flag, va_list *ap, char *str)
 	}
 	return (len);
 }
+
+
+//printf("%[-5.p]", NULL);
+
+//自分
+//[    0x]
+//本家
+//[0x   ]
